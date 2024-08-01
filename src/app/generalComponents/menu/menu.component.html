@@ -1,0 +1,88 @@
+<div class="menu">
+    <button class="active"[matMenuTriggerFor]="belowMenu" [ngClass]="{'active': activeButton.includes('menu1')}">CIRCUIT</button>
+    <mat-menu #belowMenu="matMenu" yPosition="below">
+        <button mat-menu-item [ngClass]="{'active': activeButton === 'menu1 1'}"  (click)="redirectTo('menu1 1','/circuit/consult')">Consult</button>
+        <button mat-menu-item [ngClass]="{'active': activeButton === 'menu1 2'}"  (click)="redirectTo('menu1 2','/circuit/create')">Create</button>
+        <button mat-menu-item [ngClass]="{'active': activeButton === 'menu1 3'}"  (click)="redirectTo('menu1 3','/circuit/remove')">Remove</button>
+    </mat-menu>
+
+    <button [matMenuTriggerFor]="belowMenu2" [ngClass]="{'active': activeButton.includes('menu2')}" >DRIVER</button>
+    <mat-menu #belowMenu2="matMenu" yPosition="below">
+        <button mat-menu-item [ngClass]="{'active': activeButton === 'menu2 1'}"  (click)="redirectTo('menu2 1','/driver/consult')">Consult</button>
+        <button mat-menu-item [ngClass]="{'active': activeButton === 'menu2 2'}"  (click)="redirectTo('menu2 2','/driver/create')">Create</button>
+        <button mat-menu-item [ngClass]="{'active': activeButton === 'menu2 3'}"  (click)="redirectTo('menu2 3','/driver/remove')">Remove</button>
+    </mat-menu>
+
+    <button [matMenuTriggerFor]="belowMenu3" [ngClass]="{'active': activeButton.includes('menu3')}">PENALTY</button>
+    <mat-menu #belowMenu3="matMenu" yPosition="below">
+        <button mat-menu-item [ngClass]="{'active': activeButton === 'menu3 1'}"  (click)="redirectTo('menu3 1','/penalty/consult')">Consult</button>
+        <button mat-menu-item [ngClass]="{'active': activeButton === 'menu3 2'}"  (click)="redirectTo('menu3 2','/penalty/create')">Create</button>
+        <button mat-menu-item [ngClass]="{'active': activeButton === 'menu3 3'}"  (click)="redirectTo('menu3 3','/penalty/remove')">Remove</button>
+    </mat-menu>
+    
+    <button [matMenuTriggerFor]="belowMenu4" [ngClass]="{'active': activeButton.includes('menu4')}">PETITION</button>
+    <mat-menu #belowMenu4="matMenu" yPosition="below">
+        <button mat-menu-item [ngClass]="{'active': activeButton === 'menu4 1'}"  (click)="redirectTo('menu4 1','/petition/consult')">Consult</button>
+        <button mat-menu-item [ngClass]="{'active': activeButton === 'menu4 2'}" (click)="redirectTo('menu4 2','/petition/create')">Create</button>
+        <button mat-menu-item [ngClass]="{'active': activeButton === 'menu4 3'}"  (click)="redirectTo('menu4 3','/petition/remove')">Remove</button>
+    </mat-menu>
+    
+    <button [matMenuTriggerFor]="belowMenu5" [ngClass]="{'active': activeButton.includes('menu5')}">POINTS</button>
+    <mat-menu #belowMenu5="matMenu" yPosition="below">
+        <button mat-menu-item [ngClass]="{'active': activeButton === 'menu5 1'}" (click)="redirectTo('menu5 1','/points/consult')">Consult</button>
+        <button mat-menu-item [ngClass]="{'active': activeButton === 'menu5 2'}" (click)="redirectTo('menu5 2','/points/create')">Create</button>
+        <button mat-menu-item [ngClass]="{'active': activeButton === 'menu5 3'}" (click)="redirectTo('menu5 3','/points/remove')">Remove</button>
+    </mat-menu>
+    
+    <button [matMenuTriggerFor]="belowMenu6" [ngClass]="{'active': activeButton.includes('menu6')}">RACE</button>
+    <mat-menu #belowMenu6="matMenu" yPosition="below">
+        <button mat-menu-item [ngClass]="{'active': activeButton === 'menu6 1'}" (click)="redirectTo('menu6 1','/race/consult')">Consult</button>
+        <button mat-menu-item [ngClass]="{'active': activeButton === 'menu6 2'}" (click)="redirectTo('menu6 2','/race/create')">Create</button>
+        <button mat-menu-item [ngClass]="{'active': activeButton === 'menu6 3'}" (click)="redirectTo('menu6 3','/race/remove')">Remove</button>
+    </mat-menu>
+    
+    <button [matMenuTriggerFor]="belowMenu7" [ngClass]="{'active': activeButton.includes('menu7')}">RACERESULT</button>
+    <mat-menu #belowMenu7="matMenu" yPosition="below">
+        <button mat-menu-item [ngClass]="{'active': activeButton === 'menu7 1'}" (click)="redirectTo('menu7 1','/raceResult/consult')">Consult</button>
+        <button mat-menu-item [ngClass]="{'active': activeButton === 'menu7 2'}" (click)="redirectTo('menu7 2','/raceResult/create')">Create</button>
+        <button mat-menu-item [ngClass]="{'active': activeButton === 'menu7 3'}" (click)="redirectTo('menu7 3','/raceResult/remove')">Remove</button>
+    </mat-menu>
+    
+    <button [matMenuTriggerFor]="belowMenu8" [ngClass]="{'active': activeButton.includes('menu8')}">REGULATIONSANCTION</button>
+    <mat-menu #belowMenu8="matMenu" yPosition="below">
+        <button mat-menu-item [ngClass]="{'active': activeButton === 'menu8 1'}" (click)="redirectTo('menu8 1','/regulationSanction/consult')">Consult</button>
+        <button mat-menu-item [ngClass]="{'active': activeButton === 'menu8 2'}" (click)="redirectTo('menu8 2','/regulationSanction/create')">Create</button>
+        <button mat-menu-item [ngClass]="{'active': activeButton === 'menu8 3'}" (click)="redirectTo('menu8 3','/regulationSanction/remove')">Remove</button>
+    </mat-menu>
+    
+    <button [matMenuTriggerFor]="belowMenu9" [ngClass]="{'active': activeButton.includes('menu9')}">SANCTION</button>
+    <mat-menu #belowMenu9="matMenu" yPosition="below">
+        <button mat-menu-item [ngClass]="{'active': activeButton === 'menu9 1'}" (click)="redirectTo('menu9 1','/sanction/consult')">Consult</button>
+        <button mat-menu-item [ngClass]="{'active': activeButton === 'menu9 2'}" (click)="redirectTo('menu9 2','/sanction/create')">Create</button>
+        <button mat-menu-item [ngClass]="{'active': activeButton === 'menu9 3'}" (click)="redirectTo('menu9 3','/sanction/remove')">Remove</button>
+        <button mat-menu-item [ngClass]="{'active': activeButton === 'menu9 3'}" (click)="redirectTo('menu9 3','/sanction/single')">Single Sanction</button>
+    </mat-menu>
+    
+    <button [matMenuTriggerFor]="belowMenu10" [ngClass]="{'active': activeButton.includes('menu10')}">SEASON</button>
+    <mat-menu #belowMenu10="matMenu" yPosition="below">
+        <button mat-menu-item [ngClass]="{'active': activeButton === 'menu10 1'}" (click)="redirectTo('menu10 1','/season/consult')">Consult</button>
+        <button mat-menu-item [ngClass]="{'active': activeButton === 'menu10 2'}" (click)="redirectTo('menu10 2','/season/create')">Create</button>
+        <button mat-menu-item [ngClass]="{'active': activeButton === 'menu10 3'}" (click)="redirectTo('menu10 3','/season/remove')">Remove</button>
+    </mat-menu>
+    
+    <button [matMenuTriggerFor]="belowMenu11" [ngClass]="{'active': activeButton.includes('menu11')}">TEAM</button>
+    <mat-menu #belowMenu11="matMenu" yPosition="below">
+        <button mat-menu-item [ngClass]="{'active': activeButton === 'menu11 1'}" (click)="redirectTo('menu11 1','/team/consult')">Consult</button>
+        <button mat-menu-item [ngClass]="{'active': activeButton === 'menu11 2'}" (click)="redirectTo('menu11 2','/team/create')">Create</button>
+        <button mat-menu-item [ngClass]="{'active': activeButton === 'menu11 3'}" (click)="redirectTo('menu11 3','/team/remove')">Remove</button>
+    </mat-menu>
+    
+    <button [matMenuTriggerFor]="belowMenu12" [ngClass]="{'active': activeButton.includes('menu12')}">USER</button>
+    <mat-menu #belowMenu12="matMenu" yPosition="below">
+        <button mat-menu-item [ngClass]="{'active': activeButton === 'menu12 1'}" (click)="redirectTo('menu12 1','/user/consult')">Consult</button>
+        <button mat-menu-item [ngClass]="{'active': activeButton === 'menu12 2'}" (click)="redirectTo('menu12 2','/user/create')">Create</button>
+        <button mat-menu-item [ngClass]="{'active': activeButton === 'menu12 3'}" (click)="redirectTo('menu12 3','/user/remove')">Remove</button>
+    </mat-menu>
+</div>
+
+

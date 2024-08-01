@@ -1,0 +1,65 @@
+<div class="content">
+    <div class="container">
+      <form [formGroup]="penaltyForm" (ngSubmit)="onSubmit()">
+        <h1>CREAR SANCIÓN</h1>
+        
+        <mat-form-field appearance="fill">
+          <mat-label>Carrera</mat-label>
+          <input matInput formControlName="race" placeholder="Carrera" required>
+          @if(penaltyForm.get('race')?.hasError('required')){
+            <mat-error>
+              Carrera es requerido.
+            </mat-error>
+          }
+        </mat-form-field>
+        
+        <mat-form-field appearance="fill">
+          <mat-label>Piloto</mat-label>
+          <input matInput formControlName="driver" placeholder="Piloto" required>
+          @if(penaltyForm.get('driver')?.hasError('required')){
+            <mat-error>
+              Piloto es requerida.
+            </mat-error>
+          }
+        </mat-form-field>
+        
+        
+        
+        <mat-form-field appearance="fill">
+          <mat-label>Descripción</mat-label>
+          <input matInput formControlName="description" placeholder="Descripción" required>
+          @if(penaltyForm.get('description')?.hasError('required')){
+            <mat-error>
+              Equipo es requerido.
+            </mat-error>
+          }
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+            <mat-label>Tipo  de sanción</mat-label>
+            <input matInput formControlName="penaltyType" placeholder="Descripción" required>
+            @if(penaltyForm.get('penaltyType')?.hasError('required')){
+              <mat-error>
+                Tipo de sanción es requerido.
+              </mat-error>
+            }
+          </mat-form-field>
+          <mat-form-field appearance="fill">
+            <mat-label>Cantidad de sanción</mat-label>
+            <input matInput formControlName="value" placeholder="Cantidad" required>
+            @if(penaltyForm.get('value')?.hasError('required')){
+              <mat-error>
+                Cantidad de sanción es requerido.
+              </mat-error>
+            }
+          </mat-form-field>
+        <div class="button-container">
+          <a mat-fab extended routerLink=".">
+            <mat-icon>note_add</mat-icon>
+            CREAR SANCIÓN
+          </a>
+        </div>
+      </form>
+    </div>
+  </div>
+  

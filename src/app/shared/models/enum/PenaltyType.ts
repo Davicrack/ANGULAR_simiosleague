@@ -1,0 +1,5 @@
+enum PenaltyType{
+    POINTS,
+	POSITIONS,
+    DEQUALIFICATION
+}

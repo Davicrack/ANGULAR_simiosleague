@@ -1,0 +1,51 @@
+<div>
+    <div id="initialContent">
+        <div class="creadorSancion">
+            xShalexx 
+        </div>  
+        <div class = "textoIntermedio">
+            PIDE SANCIÓN A
+        </div>
+        <div class="recividorSancion">
+            Anchufiastico
+        </div>
+    </div>
+    @if(canShowSecondPage){
+        <div id="secondPage">
+            <div class="info">xShalexx indica que el jugador Anchufiastico:</div>
+            <div class="queja">LA QUEJA DEL SHALEX QUE NO SABE NADA DE F1 PERO SE QUEJA LA QUEJA DEL SHALEX QUE NO SABE NADA DE F1 PERO SE QUEJA LA QUEJA DEL SHALEX QUE NO SABE NADA DE F1 PERO SE QUEJA LA QUEJA DEL SHALEX QUE NO SABE NADA DE F1 PERO SE QUEJA LA QUEJA DEL SHALEX QUE NO SABE NADA DE F1 PERO SE QUEJA LA QUEJA DEL SHALEX QUE NO SABE NADA DE F1 PERO SE QUEJA LA QUEJA DEL SHALEX QUE NO SABE NADA DE F1 PERO SE QUEJA LA QUEJA DEL SHALEX QUE NO SABE NADA DE F1 PERO SE QUEJA </div>
+        </div>
+    }
+    @if(canShowThirdPage){
+        <div id="video">
+            <iframe width="100%" height="100%" src="https://www.youtube.com/embed/_IFyQycz1w4?si=ywxBiZLjNaiSL7W8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        </div>
+    }
+    
+    @if(canShowFinalPage){
+        <div id="veredict">
+            <div class="noSancion">
+                <svg class="checkmark addClass" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52"><circle class="checkmark__circle addClass" cx="26" cy="26" r="25" fill="none"/><path class="checkmark__check addClass" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/></svg>
+                <p>No es sanción</p>
+            </div>
+            <!-- <div class="noSancion">
+                <svg class="crossmark animateElement" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52"><circle class="crossmark__circle addClass" cx="26" cy="26" r="25" fill="none"/><path class="cross__path cross__path--right animateElement" fill="none" d="M16,16 l20,20" /><path class="cross__path cross__path--left animateElement" fill="none" d="M16,36 l20,-20" /></svg>
+                <p>Es sanción</p>
+            </div> -->
+            <!-- <div class="image-container">
+                <img class="image check-mark" src="../../../../../assets/images/tick-removebg-preview.png" alt="FIALogo">
+                <img class="image cross-circle" src="../../../../../assets/images/x-removebg-preview.png" alt="FIALogo">
+            </div> -->
+            <div class="explicaSancion">
+                Se considera que no es sancion porque el shalex es tonto y no sabe pedirlas oleee
+                Se considera que no es sancion porque el shalex es tonto y no sabe pedirlas oleee
+                Se considera que no es sancion porque el shalex es tonto y no sabe pedirlas oleee
+                Se considera que no es sancion porque el shalex es tonto y no sabe pedirlas oleee
+            </div>
+        </div>
+    }
+    <div class = "buttonMenu">
+        <button (click)="cambiaPagina(-1)">&lt;</button>
+        <button (click)="cambiaPagina(1)">&gt;</button>
+    </div>
+<div>

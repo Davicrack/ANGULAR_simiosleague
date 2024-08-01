@@ -1,0 +1,16 @@
+/* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; 
+    font-family: 'f1-Regular',sans-serif !important;}
+
+@font-face {
+    font-family: 'f1-Regular';
+    src: url('assets/fonts/Formula1-Regular.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+*:not(mat-icon){
+    font-family: 'f1-Regular' !important;
+}

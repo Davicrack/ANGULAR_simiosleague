@@ -1,0 +1,47 @@
+.menu{
+    background-color: #222222;
+    height:6vh;
+}
+.menu button{
+    font-family: 'f1-Regular';
+    font-size: 2vh;
+    margin: 0px;
+    padding: 0px;
+    height: 6vh;
+    width: 8vw;
+    background-color: #222222;
+    padding: 0px;
+    color:white;
+    border-radius: 1vh 1vh 0 0;
+    //font-weight: bold;
+    border: 0px;
+}
+span{
+    font-family: 'f1-Regular';
+}
+::ng-deep .mat-mdc-menu-content {
+    padding: 0px !important;
+}
+div{
+    padding: 0px;
+    background-color: #404040;
+}
+button{
+    background-color: #404040;
+    font-family: 'f1-Regular';
+    color: white;
+    
+}
+button:hover{
+    //border-bottom: 4px solid #FFAF74;
+    font-family: 'f1-Regular' !important;
+    box-shadow: inset 0 -1vh 0 0 #FFAF74;
+    background-color: #404040;
+}
+
+.active{
+    //  border-bottom: 4px solid #FFAF74;
+    font-family: 'f1-Regular' !important;
+    box-shadow: inset 0 -1vh 0 0 #FFAF74;
+    background-color: #404040;
+}
