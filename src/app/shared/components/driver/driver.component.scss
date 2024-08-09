@@ -1,0 +1,159 @@
+.driverContainer {
+    height: 94vh;
+    width: 100vw;
+    background-color: #212121;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+button {
+    height: 80vh;
+    width: 3vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 6vh;
+    border: 0.1vh solid #ccc;
+    border-radius: 1vh;
+    margin: 0 5vh;
+    background-color: #555555;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #838383;
+}
+
+.card {
+    width: 90vw;
+    height: 90vh;
+    perspective: 100vw; /* Agrega profundidad para el efecto de 3D */
+}
+
+.card-rotate {
+    transform: rotateY(360deg);
+}
+
+.card-front, .card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden; /* Oculta el lado trasero cuando está girado */
+    display: flex;
+    gap: 1vh;
+    overflow: hidden;
+    border-radius: 1vh;
+}
+
+.card-front {
+    background-color: #212121;
+}
+
+.card-back {
+    background-color: #333;
+    transform: rotateY(360deg); /* Gira el lado trasero 180 grados */
+}
+
+.card-front p, .card-back p {
+    background-image: url('https://media.formula1.com/d_driver_fallback_image.png/content/dam/fom-website/drivers/M/MAXVER01_Max_Verstappen/maxver01.png');
+    background-size: cover;
+    background-position: center;
+    height: 88vh;
+    flex: 1;
+    overflow: hidden;
+    cursor: pointer;
+    border-radius: 1vh;
+    transition: all 0.5s;
+    border: 0.1vh solid #ff5a91;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card-front p:hover, .card-back p:hover {
+    flex: 4; 
+}
+
+.card-front p span, .card-back p span {
+    font-size: 4vh;
+    min-width: 14em;
+    padding: 0.5em;
+    text-align: center;
+    transform: rotate(-90deg);
+    transition: all 0.5s;
+    text-transform: uppercase;
+    color: #ff5a91;
+    letter-spacing: 0.2vw;
+    text-shadow:
+    0.3vh 0.3vh 0 black,
+    -0.3vh -0.3vh 0 black,
+    0.3vh -0.3vh 0 black,
+    -0.3vh 0.3vh 0 black;
+}
+
+.card-front p:hover span, .card-back p:hover span {
+    transform: rotate(0);
+}
+
+/* styles.css */
+@keyframes rotateAndChangeText {
+    0% {
+        transform: rotateY(0deg);
+    }
+    50% {
+        transform: rotateY(270deg);
+    }
+    100% {
+        transform: rotateY(360deg);
+    }
+}
+
+.p-animate {
+    animation: rotateAndChangeText 1s forwards;
+}
+
+
+/*
+.card {
+    width: 300px;
+    height: 200px;
+    perspective: 1000px; 
+    margin: 50px auto; 
+  }
+  
+  .card-inner {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.6s;
+  }
+  
+  .card:hover .card-inner {
+    transform: rotateY(180deg);
+  }
+  
+  .card-front, .card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+  }
+  
+  .card-front {
+    background-color: #f0f0f0;
+  }
+  
+  .card-back {
+    background-color: #333;
+    color: white;
+    transform: rotateY(180deg); M
+  }
+*/

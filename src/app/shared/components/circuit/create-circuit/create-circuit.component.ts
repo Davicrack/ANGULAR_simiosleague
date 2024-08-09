@@ -39,6 +39,7 @@ export class CreateCircuitComponent {
     length: 0,
     imagePaths: ['']
   };
+  
   constructor(private circuitService: CircuitService, private fb: FormBuilder) { 
     this.circuitForm = this.fb.group({
       name: ['', Validators.required],

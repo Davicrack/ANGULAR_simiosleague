@@ -1,58 +1,21 @@
-<div class="content">
+<div class="globalContainer">
+  <form>
+    <h1>CREAR NUEVO PILOTO</h1>
     <div class="container">
-      <form [formGroup]="driverForm" (ngSubmit)="onSubmit()">
-        <h1>CREAR DRIVER</h1>
-        
-        <mat-form-field appearance="fill">
-          <mat-label>Nombre</mat-label>
-          <input matInput formControlName="name" placeholder="Nombre" required>
-          @if(driverForm.get('name')?.hasError('required')){
-            <mat-error>
-              Nombre es requerido.
-            </mat-error>
-          }
-          <!-- <mat-error *ngIf="circuitForm.get('name').hasError('required')">
-            Nombre es requerido.
-          </mat-error> -->
-        </mat-form-field>
-        
-        <mat-form-field appearance="fill">
-            <mat-label>Nacionalidad</mat-label>
-            <mat-select formControlName="nationality" placeholder="Selecciona el país">
-              @for (nacionalidad of nacionalidades; track $index) {
-                <mat-option [value]="nacionalidad">{{ nacionalidad }}</mat-option>
-              }
-            </mat-select>
-          </mat-form-field>
-        
-        <mat-form-field appearance="fill">
-          <mat-label>Localización</mat-label>
-          <input matInput formControlName="birthDate" placeholder="Localización" required>
-          @if(driverForm.get('birthDate')?.hasError('required')){
-            <mat-error>
-              Fecha de naciomiento es requerida.
-            </mat-error>
-          }
-        </mat-form-field>
-        
-        
-        
-        <mat-form-field appearance="fill">
-          <mat-label>Longitud</mat-label>
-          <input matInput formControlName="team" placeholder="Longitud" required>
-          @if(driverForm.get('team')?.hasError('required')){
-            <mat-error>
-              Equipo es requerido.
-            </mat-error>
-          }
-        </mat-form-field>
-        <div class="button-container">
-          <a mat-fab extended routerLink=".">
-            <mat-icon>note_add</mat-icon>
-            CREAR DRIVER
-          </a>
-        </div>
-      </form>
+      <input required="" type="text" name="text" class="input">
+      <label class="label">Username</label>
     </div>
-  </div>
-  
+    <div class="container">
+      <input required="" type="text" name="text" class="input">
+      <label class="label">Surname</label>
+    </div>
+    <div class="container">
+      <input required="" type="text" name="text" class="input">
+      <label class="label">Surname</label>
+    </div>
+    <div class="container">
+      <input required="" type="text" name="text" class="input">
+      <label class="label">Surname</label>
+    </div>
+  </form>
+</div>

@@ -1,7 +1,7 @@
 <div class="content">
   <div class="container">
     <form [formGroup]="circuitForm" (ngSubmit)="onSubmit()">
-      <h1>CREAR CIRCUITO</h1>
+      <h1>CREAR CIRCUIT</h1>
       
       <mat-form-field appearance="fill">
         <mat-label>Nombre</mat-label>
@@ -17,57 +17,39 @@
       </mat-form-field>
       
       <mat-form-field appearance="fill">
-        <mat-label>Descripción</mat-label>
-        <textarea matInput formControlName="descripcion" rows="5" placeholder="Descripción" required></textarea>
-        @if(circuitForm.get('descripcion')?.hasError('required')){
-          <mat-error>
-            Descripción es requerida.
-          </mat-error>
-        }
-      </mat-form-field>
+          <mat-label>Nacionalidad</mat-label>
+          <mat-select formControlName="nationality" placeholder="Selecciona el país">
+            @for (pais of paises; track $index) {
+              <mat-option [value]="pais">{{ pais }}</mat-option>
+            }
+          </mat-select>
+        </mat-form-field>
       
       <mat-form-field appearance="fill">
         <mat-label>Localización</mat-label>
-        <input matInput formControlName="pais" placeholder="Localización" required>
-        @if(circuitForm.get('pais')?.hasError('required')){
+        <input matInput formControlName="birthDate" placeholder="Localización" required>
+        @if(circuitForm.get('birthDate')?.hasError('required')){
           <mat-error>
-            Localización es requerida.
+            Fecha de naciomiento es requerida.
           </mat-error>
         }
       </mat-form-field>
       
-      <mat-form-field appearance="fill">
-        <mat-label>País</mat-label>
-        <mat-select formControlName="paisSeleccionado" placeholder="Selecciona el país">
-          @for (pais of paises; track $index) {
-            <mat-option [value]="pais">{{ pais }}</mat-option>
-          }
-        </mat-select>
-      </mat-form-field>
+      
       
       <mat-form-field appearance="fill">
         <mat-label>Longitud</mat-label>
-        <input matInput formControlName="longitud" placeholder="Longitud" required>
-        @if(circuitForm.get('longitud')?.hasError('required')){
+        <input matInput formControlName="team" placeholder="Longitud" required>
+        @if(circuitForm.get('team')?.hasError('required')){
           <mat-error>
-            Longitud es r equerida.
-          </mat-error>
-        }
-      </mat-form-field>
-      
-      <mat-form-field appearance="fill">
-        <mat-label>Imagen</mat-label>
-        <input matInput formControlName="imagen" placeholder="Imagen" required>
-        @if(circuitForm.get('imagen')?.hasError('required')){
-          <mat-error>
-            Imagen es requerida.
+            Equipo es requerido.
           </mat-error>
         }
       </mat-form-field>
       <div class="button-container">
         <a mat-fab extended routerLink=".">
           <mat-icon>note_add</mat-icon>
-          CREAR CIRCUITO
+          CREAR DRIVER
         </a>
       </div>
     </form>

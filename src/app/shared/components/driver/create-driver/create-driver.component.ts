@@ -9,6 +9,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatDividerModule } from '@angular/material/divider';
 import { Component } from '@angular/core';
 import { Nationality } from '../../../models/enum/Nationality';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-create-driver',
@@ -29,23 +30,44 @@ import { Nationality } from '../../../models/enum/Nationality';
   styleUrl: './create-driver.component.scss'
 })
 export class CreateDriverComponent {
-  
-  driverForm!: FormGroup;
-  nacionalidades! : string[];
-  constructor(private fb:FormBuilder){
+  driverForm: FormGroup;
+
+  constructor(private fb: FormBuilder, private http: HttpClient) {
     this.driverForm = this.fb.group({
       name: ['', Validators.required],
       nationality: ['', Validators.required],
       birthDate: ['', Validators.required],
-      team: ['', Validators.required]
+      type: ['', Validators.required],
+      teams: [[]], // Ajusta según cómo manejes los equipos
+      image: [null, Validators.required]
     });
   }
 
-  ngOnInit(){
-    this.nacionalidades = Object.keys(Nationality).filter(key=> isNaN(Number(key)));
+  onFileChange(event: any) {
+    const file = event.target.files[0];
+    if (file) {
+      this.driverForm.patchValue({
+        image: file
+      });
+    }
   }
 
-  onSubmit(){
-    alert('enviado');
+  onSubmit() {
+    if (this.driverForm.valid) {
+      const formData = new FormData();
+      formData.append('name', this.driverForm.get('name')?.value);
+      formData.append('nationality', this.driverForm.get('nationality')?.value);
+      formData.append('birthDate', this.driverForm.get('birthDate')?.value);
+      formData.append('type', this.driverForm.get('type')?.value);
+      formData.append('teams', JSON.stringify(this.driverForm.get('teams')?.value));
+      formData.append('image', this.driverForm.get('image')?.value);
+
+      this.http.post('/api/driver/create', formData)
+        .subscribe(response => {
+          console.log('Driver created successfully', response);
+        }, error => {
+          console.error('Error creating driver', error);
+        });
+    }
   }
 }

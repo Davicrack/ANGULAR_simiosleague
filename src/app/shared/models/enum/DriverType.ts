@@ -1,4 +1,4 @@
-enum DriverType{
+export enum DriverType{
     MAIN,
 	SUBTITUTE
 }

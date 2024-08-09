@@ -1,7 +1,7 @@
 <div class="content">
     <div class="container">
       <form [formGroup]="sanctionForm" (ngSubmit)="onSubmit()">
-        <h1>CREAR DRIVER</h1>
+        <h1>CREAR SANCTION</h1>
         
         <mat-form-field appearance="fill">
           <mat-label>Nombre</mat-label>
@@ -11,19 +11,7 @@
               Nombre es requerido.
             </mat-error>
           }
-          <!-- <mat-error *ngIf="circuitForm.get('name').hasError('required')">
-            Nombre es requerido.
-          </mat-error> -->
         </mat-form-field>
-        
-        <!-- <mat-form-field appearance="fill">
-            <mat-label>Nacionalidad</mat-label>
-            <mat-select formControlName="nationality" placeholder="Selecciona el país">
-              @for (nacionalidad of nacionalidades; track $index) {
-                <mat-option [value]="nacionalidad">{{ nacionalidad }}</mat-option>
-              }
-            </mat-select>
-          </mat-form-field> -->
         
         <mat-form-field appearance="fill">
           <mat-label>Localización</mat-label>
@@ -34,9 +22,6 @@
             </mat-error>
           }
         </mat-form-field>
-        
-        
-        
         <mat-form-field appearance="fill">
           <mat-label>Longitud</mat-label>
           <input matInput formControlName="team" placeholder="Longitud" required>

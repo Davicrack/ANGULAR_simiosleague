@@ -1,0 +1,99 @@
+/* social-media.component.css */
+:host {
+    position: fixed; /* Fija el componente en una posición específica */
+    bottom: -7vh; /* Distancia desde la parte inferior de la pantalla */
+    left: 80vh; /* Distancia desde el borde derecho de la pantalla */
+    z-index: 9999; /* Asegúrate de que el componente esté por encima de otros elementos */
+    //background-color: transparent; /* Ajusta el color de fondo si es necesario */
+  }
+  .card:hover {
+    transform: translateY(-7vh); /* Mueve el contenedor 10vh hacia arriba */
+}
+.card {
+    border-radius: 2vh 2vh 0.5vh 0.5vh;
+    width: fit-content;
+    height: fit-content;
+    background-color: rgb(238, 238, 238);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5vh;
+    gap: 2vh;
+    box-shadow: 0px 0px 2vh rgba(0, 0, 0, 0.055);
+  }
+  
+  /* for all social containers*/
+  .socialContainer {
+    width: 5vh;
+    height: 5vh;
+    background-color: rgb(44, 44, 44);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    transition-duration: .3s;
+    border-radius: 1vh;
+  }
+  /* instagram*/
+  .containerOne:hover {
+    background: linear-gradient(45deg, #f58529, #dd2a7b, #8134af, #515bd4);
+    transition-duration: .3s;
+  }
+  /* twitter*/
+  .containerTwo:hover {
+    background-color: #00acee;
+    transition-duration: .3s;
+  }
+  /* linkdin*/
+  .containerThree:hover {
+    background: linear-gradient(45deg, #010101, #2a2a2a, #00f2ea, #ff0050);
+    background-size: 100% 550%;
+    transition-duration: .3s;
+  }
+  /* Whatsapp*/
+  .containerFour:hover {
+    background-color: #9146FF;
+    transition-duration: .3s;
+  }
+  
+  .socialContainer:active {
+    transform: scale(0.9);
+    transition-duration: .3s;
+  }
+  
+  .socialSvg {
+    width: 3vh;
+  }
+  
+  .socialSvg path {
+    fill: rgb(255, 255, 255);
+  }
+  
+  .socialContainer:hover .socialSvg {
+    animation: slide-in-top 0.3s both;
+  }
+  
+  @keyframes slide-in-top {
+    0% {
+      transform: translateY(-50px);
+      opacity: 0;
+    }
+  
+    100% {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+  
+  .card h1 {
+    font-size: 3vh;
+    position: absolute;
+    top: -5vh; /* Ajusta el valor para mover el h1 más arriba */
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1; /* Asegura que el h1 esté por encima de los demás elementos */
+    background: #EEEEEE; /* Añade un fondo para evitar que el texto se mezcle con el contenido de fondo */
+    padding: 0 1vh; /* Añade algo de espacio alrededor del texto si es necesario */
+    border-radius: 1vh;
+  }
+  

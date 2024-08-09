@@ -10,6 +10,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { FaIconLibrary } from '@fortawesome/angular-fontawesome';
 import { faTrash } from '@fortawesome/free-solid-svg-icons';
 import { Observable } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-circuit',
@@ -47,7 +48,7 @@ export class CircuitComponent {
 
   displayedColumns: string[] = ['id', 'name', 'description', 'location', 'country', 'length', 'bin'];
   
-  constructor(private router : Router,private circuitService: CircuitService, library : FaIconLibrary) { library.addIcons(faTrash);}
+  constructor(private router : Router,private httpClient:HttpClient,private circuitService: CircuitService, library : FaIconLibrary) { library.addIcons(faTrash);}
 
   ngOnInit(): void {
     this.fetchCircuits();
@@ -58,5 +59,9 @@ export class CircuitComponent {
       .subscribe(data => {
         this.circuitData = data;
       });
+  }
+
+  uploadImage(){
+
   }
 }
