@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, Renderer2 } from '@angular/core';
 import { CircuitService } from '../../../../core/services/JSON-Reader/circuit-JSON/circuit.service';
 import { Circuit } from '../../../models/circuit.model';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
@@ -10,6 +10,8 @@ import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDividerModule } from '@angular/material/divider';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { catchError, Observable, throwError } from 'rxjs';
 
 @Component({
   selector: 'app-create-circuit',
@@ -40,112 +42,136 @@ export class CreateCircuitComponent {
     imagePaths: ['']
   };
   
-  constructor(private circuitService: CircuitService, private fb: FormBuilder) { 
-    this.circuitForm = this.fb.group({
-      name: ['', Validators.required],
-      descripcion: ['', Validators.required],
-      pais: ['', Validators.required],
-      paisSeleccionado: ['', Validators.required],
-      longitud: ['', Validators.required],
-      imagen: ['', Validators.required]
-    });
+  private baseUrl = "http://localhost:8080/api/circuit"
+
+  constructor(private renderer: Renderer2, private el: ElementRef,private http: HttpClient) { }
+
+  subirImagen(imagen: File, nombreCircuito: string, p0: { responseType: string; }): Observable<any> {
+    const formData: FormData = new FormData();
+    formData.append('imagen', imagen);
+    formData.append('nombreCircuito', nombreCircuito);
+
+    return this.http.post(`${this.baseUrl}/subir`, formData)
+      .pipe(
+        catchError(this.handleError)
+      );
   }
-  selectedFile: File | null = null;
-  message: string | null = null;
 
-  paises!: string[];
+  subirImagenPrincipal(imagen: File, nombreCircuito: string): Observable<any> {
+    const formData: FormData = new FormData();
+    formData.append('imagen', imagen);
+    formData.append('nombreCircuito', nombreCircuito);
 
-  circuitForm!: FormGroup;
-
-  
-  ngOnInit(){
-    ///////////////////
-  //   document.addEventListener('DOMContentLoaded', function () {
-  //     var selectSelected = document.querySelector('.select-selected')!;
-  //     var selectItems = document.querySelector('.select-items')!;
-  //     var items = selectItems.querySelectorAll('div');
-  
-  //     // Muestra u oculta el contenedor de opciones al hacer clic en el elemento seleccionado
-  //     selectSelected.addEventListener('click', function () {
-  //         selectItems.classList.toggle('select-hide');
-  //     });
-  
-  //     // Cambia la opción seleccionada y oculta el contenedor de opciones al hacer clic en una opción
-  //     items.forEach(function (item) {
-  //         item.addEventListener('click', function () {
-  //             selectSelected.textContent = this.textContent;
-  //             selectItems.classList.add('select-hide');
-  //         });
-  //     });
-  
-  //     // Cierra el contenedor de opciones si se hace clic fuera del select
-  //     document.addEventListener('click', function (event) {
-  //       const target = event.target as HTMLElement;
-  //       if (target && !target.closest('.custom-select')) {
-  //           selectItems.classList.add('select-hide');
-  //       }
-  //     });
-  // });
-  
-    /////////////////////
-    this.paises = Object.keys(Nationality).filter(key => isNaN(Number(key)));
-    console.log(this.paises);
+    return this.http.post(`${this.baseUrl}/subir`, formData)
+      .pipe(
+        catchError(this.handleError)
+      );
   }
-  onFileChange(event : any){
+
+  private handleError(error: HttpErrorResponse) {
+    let errorMessage = 'Error desconocido!';
+    if (error.error instanceof ErrorEvent) {
+      // Error del lado del cliente
+      errorMessage = `Error: ${error.error.message}`;
+    } else {
+      // Error del lado del servidor
+      errorMessage = `Error Code: ${error.status}\nMessage: ${error.message}`;
+    }
+    return throwError(() => new Error(errorMessage));
+  }
+
+  imagen: File | null = null;
+  nombreCircuito: string = '';
+  mensaje: string = '';
+  imageUrl: string | ArrayBuffer | null = null;
+
+  onFileChange(event: any) {
+    if (event.target.files.length > 0) {
+      this.imagen = event.target.files[0];
+      this.previewImage(this.imagen!);
+    }
+  }
+
+  previewImage(file: File){
+    const reader = new FileReader();
+    reader.onload = () => {
+      this.imageUrl = reader.result;
+    }
+    reader.readAsDataURL(file);
+  }
+
+  onImageAdded(event: any){
+
     const file = event.target.files[0];
-    if(file){
-      this.selectedFile = file;
-    }
-  }
- 
-  upload() {
-    if (this.selectedFile) {
-      this.circuitService.uploadImage(this.selectedFile, `/circuit/${this.circuit.id}`).subscribe(
-        (response: any) => {
-          this.message = response;
-        },
-        (error) => {
-          this.message = `Error: ${error.message}`;
-        }
-      );
-    } else {
-      this.message = 'Please select a file first.';
+    if (file) {
+      this.displayImage(file);
     }
   }
 
-  onSubmit(): void {
-    console.log("TAMOOOOOOS " + this.circuit.name);
-    
-    if (this.selectedFile) {
+
+  displayImage(file: File): void {
+    const reader = new FileReader();
+
+    reader.onload = () => {
+      const imageUrl = reader.result as string;
+
+      // Crear un nuevo div para la imagen
+      const imageDiv = this.renderer.createElement('div');
+      this.renderer.addClass(imageDiv, 'image');
+
+      // Crear una nueva imagen
+      const image = this.renderer.createElement('img');
+      this.renderer.setAttribute(image, 'src', imageUrl);
       
-      console.log("TAMOOOOOOS2 " + this.circuit.name);
 
-      this.circuitService.uploadImage(this.selectedFile, `/circuit/${this.circuit.name}.png`).subscribe(
-        
-        response => {
-          
-          console.log("TAMOOOOOOS3 " + this.circuit.name);
-          console.log('Imagen subida', response);
-          // Ajusta esto según cómo tu backend devuelve la URL de la imagen
-          const imageUrl = response.imageUrl; // Ajusta esto según la respuesta del backend
-          this.circuit.imagePaths.push(imageUrl); // Añade la URL a la lista de imágenes del circuito
+      // Añadir la imagen al div
+      this.renderer.appendChild(imageDiv, image);
 
-          this.circuitService.addCircuit(this.circuit).subscribe(
-            response => {
-              console.log('Circuito creado', response);
-              // Aquí puedes añadir alguna lógica adicional, como redireccionar o mostrar un mensaje de éxito
-            },
-            error => {
-              console.error('Error al crear el circuito', error);
-            }
-          );
-        },
-        error => {
-          console.error('Error al subir la imagen', error);
+      // Obtener el contenedor donde se añadirá la imagen
+      const container = this.el.nativeElement.querySelector('#imageContainer');
+
+      // Añadir el nuevo div con la imagen al contenedor
+      this.renderer.appendChild(container, imageDiv);
+    };
+
+    reader.readAsDataURL(file);
+  }
+  onSubmit() {
+    if (this.imagen && this.nombreCircuito) {
+        const div = document.getElementById('imageContainer');
+        if (div) {
+            const imagenes = div.querySelectorAll('img');
+
+            imagenes.forEach(imagen => {
+                // Crear un canvas
+                const canvas = document.createElement('canvas');
+                const context = canvas.getContext('2d');
+
+                canvas.width = imagen.width;
+                canvas.height = imagen.height;
+
+                context?.drawImage(imagen, 0, 0, canvas.width, canvas.height);
+
+                canvas.toBlob((blob) => {
+                    if (blob) {
+                        const file = new File([blob], 'imagen.png');
+
+                        this.subirImagen(file, this.nombreCircuito, { responseType: 'text' }).subscribe({
+                          next: (response) => {
+                              console.log('Respuesta del backend:', response);  // Esto te mostrará la respuesta exacta
+                              this.mensaje = 'Imagen subida con éxito';
+                          },
+                          error: (error) => {
+                              console.error('Error al subir la imagen:', error);
+                              this.mensaje = `Error al subir la imagen: ${error.message}`;
+                          }
+                        });                
+                    }
+                }, 'image/png');
+            });
         }
-      );
     } else {
-      console.error('No se ha seleccionado ningún archivo.');
+        this.mensaje = 'Por favor, seleccione una imagen y proporcione el nombre del circuito.';
     }
   }
 }

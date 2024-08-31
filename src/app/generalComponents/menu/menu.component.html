@@ -1,5 +1,25 @@
 <div class="menu">
-    <button class="active"[matMenuTriggerFor]="belowMenu" [ngClass]="{'active': activeButton.includes('menu1')}">CIRCUIT</button>
+    <div id="segmento1">
+        <a href ="/">
+            <img href="/" id="simiosImage" alt="SimiosLeague" src="https://static-cdn.jtvnw.net/jtv_user_pictures/60b3a6b2-7410-466a-89c6-a1a17979b39c-profile_image-70x70.png">
+        </a>
+    </div>
+    <div id="segmento2">
+        <button>CALENDARIO</button>
+        
+        <button>PILOTOS</button>
+        
+        <button>REGLAMENTO</button>
+        
+        <button>CIRCUITOS</button>
+    </div>
+    <div id="segmento6">
+        <div id="segmento5">
+            <app-redes-sociales2></app-redes-sociales2>
+        </div>
+      <app-log-in-button></app-log-in-button>
+    </div>
+    <!-- <button class="active"[matMenuTriggerFor]="belowMenu" [ngClass]="{'active': activeButton.includes('menu1')}">CIRCUIT</button>
     <mat-menu #belowMenu="matMenu" yPosition="below">
         <button mat-menu-item [ngClass]="{'active': activeButton === 'menu1 1'}"  (click)="redirectTo('menu1 1','/circuit/consult')">Consult</button>
         <button mat-menu-item [ngClass]="{'active': activeButton === 'menu1 2'}"  (click)="redirectTo('menu1 2','/circuit/create')">Create</button>
@@ -82,7 +102,7 @@
         <button mat-menu-item [ngClass]="{'active': activeButton === 'menu12 1'}" (click)="redirectTo('menu12 1','/user/consult')">Consult</button>
         <button mat-menu-item [ngClass]="{'active': activeButton === 'menu12 2'}" (click)="redirectTo('menu12 2','/user/create')">Create</button>
         <button mat-menu-item [ngClass]="{'active': activeButton === 'menu12 3'}" (click)="redirectTo('menu12 3','/user/remove')">Remove</button>
-    </mat-menu>
+    </mat-menu> -->
 </div>
 
 

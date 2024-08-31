@@ -1,0 +1,77 @@
+*{
+    margin: 0;
+    padding: 0;
+    color: white;
+}
+button{
+    color: black;
+}
+.container{
+    text-align: center;
+    background-image: url("https://static-cdn.jtvnw.net/jtv_user_pictures/b514a542-9e64-48b6-96e8-1f0f08150b2f-channel_offline_image-1920x1080.png");
+    width: 100vw;
+    height: 94vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+form{
+    display: flex;
+    background-color: grey;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+    width: 70vw;
+    height: 80vh;
+    border-radius: 2vh;
+}
+.input {
+    max-width: 190px;
+    display: none;
+  }
+  
+  .labelFile {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 250px;
+    height: 190px;
+    border: 2px dashed #ccc;
+    align-items: center;
+    text-align: center;
+    padding: 5px;
+    color: #404040;
+    cursor: pointer;
+  }
+.image{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 1 1 calc(25% - 10px); /* Ajusta el tamaño para que haya 4 elementos por fila (25% del ancho menos el espacio) */
+    box-sizing: border-box; /* Incluye padding y border en el cálculo del ancho */
+    background: rgb(185, 185, 185);
+    max-height: 10vh;
+    max-width: 10vh;
+    height: 10vh;
+    width: 10vh;
+    text-align: center;
+    border: 1px solid grey;
+    margin: 1px;
+    border-radius: 10px;
+}
+.image img{
+    width: 100%;
+}
+#imageContainer{
+    min-height: 20vh;
+    width: 70%;    
+    justify-content: center;
+    align-items: center;
+    background-color: lightgrey;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    vertical-align: middle;
+    border-radius: 10px;
+    border: 2px dashed black;
+}

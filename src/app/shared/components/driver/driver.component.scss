@@ -92,7 +92,9 @@ button:hover {
     0.3vh -0.3vh 0 black,
     -0.3vh 0.3vh 0 black;
 }
-
+button:disabled{
+    background-color: black;
+}
 .card-front p:hover span, .card-back p:hover span {
     transform: rotate(0);
 }

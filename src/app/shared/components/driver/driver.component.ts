@@ -18,8 +18,14 @@ export class DriverComponent {
   limitedDriverData! : Driver[];
   constructor(private driverService : DriverService){};
 
+  
+  ngAfterViewInit(){
+  }
   ngOnInit(): void{
     this.getDriversTable();
+    
+    const previousButton = document.getElementById('prevButton') as HTMLButtonElement;
+    previousButton.disabled = true
   }
 
   getDriversTable() : void {
@@ -51,23 +57,49 @@ export class DriverComponent {
   }
 
   addParagraphs(){
-    if(this.driverData.length >= this.actualIndex+7){
-      this.actualIndex+=7;
-    }else{
-      this.actualIndex = this.driverData.length-7;
+    
+    const previousButton = document.getElementById('prevButton') as HTMLButtonElement;
+    const nextButton = document.getElementById('nextButton') as HTMLButtonElement;
+    if(previousButton.disabled){
+      previousButton.disabled = false;
     }
-    this.setDataLimit();
-    this.animateAllParagraphs();
+    if(this.driverData.length > this.actualIndex+7){
+     
+      this.actualIndex+=7;
+      this.setDataLimit();
+      this.animateAllParagraphs();
+    }else{
+      this.actualIndex += 7;
+      
+      this.setDataLimit();
+      this.animateAllParagraphs();
+      nextButton.disabled= true;
+    }
+    if(this.actualIndex + 7 >= this.driverData.length){
+      nextButton.disabled=true;
+    }
+    alert("ENTRO NORMAL PORQUE " + this.driverData.length + " " + this.actualIndex)
   }
 
   removeParagraphs(){
-    if(this.actualIndex-7 < 0){
+   
+    const nextButton = document.getElementById('nextButton') as HTMLButtonElement;
+    if(nextButton.disabled){
+      nextButton.disabled = false;
+    }
+    const previousButton = document.getElementById('prevButton') as HTMLButtonElement;
+    const paragraphs = document.querySelectorAll('p');
+    if(this.actualIndex-7 <= 0){
       this.actualIndex = 0;
+      this.setDataLimit();
+      this.animateAllParagraphs();
+      previousButton.disabled = true;
     }else{
       this.actualIndex-=7;
     }
     this.setDataLimit();
     this.animateAllParagraphs();
+    alert("ENTRO NORMAL PORQUE " + this.driverData.length + " " + this.actualIndex)
   }
   canAnimate : boolean = true;
   animateAllParagraphs(){
@@ -85,8 +117,8 @@ export class DriverComponent {
             
             paragraph.style.backgroundImage = `url('${this.limitedDriverData[index].imagePATH}')`;
             span.innerText = `${this.limitedDriverData[index].name}`;
-          }, 250); // 0.5 segundos
-        }, index * 200); // Retraso de 3 segundos entre cada <p>
+          }, 100); 
+        }, index * 100); // Retraso de 3 segundos entre cada <p>
         this.canAnimate = true;
         paragraph.classList.remove('p-animate');
       });

@@ -1,0 +1,26 @@
+<div class="initiaPage">
+    <div class="l1">
+        <div (click)="redirect('/season/consult')">
+            <p>CALENDARIO</p>
+            <app-calendar-div></app-calendar-div>
+        </div>
+        <div (click)="redirect('/driver/consult')">
+            <p>PILOTOS</p>
+            <img class="steeringWheel" src="../../assets/images/steeringWheel-removebg-preview.png" alt="steeringWheel">
+        </div>
+        <div (click)="redirect('/season/consult')">
+            <p>REGLAMENTO</p>
+            <app-calendar-div></app-calendar-div>
+        </div>           
+    </div>
+    <div class="l2">
+        <div (click)="redirect('/circuit/consult')">
+            <p>CIRCUITOS</p>
+            <app-circuit-div></app-circuit-div>
+        </div>
+        <div (click)="redirect('/')">
+            <p>CARRERAS</p>
+            <app-circuit-div></app-circuit-div>
+        </div>
+    </div>
+</div>

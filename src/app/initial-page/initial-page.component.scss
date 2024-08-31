@@ -1,0 +1,79 @@
+.initiaPage{
+    color:rgb(219, 219, 219);
+    width: 100vw;
+    background-color: #3f3f3f;
+    height: 94vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+p{
+    font-size: 1vw;
+}
+
+@keyframes clickAnimation {
+	0% {
+		transform: scale(1);
+	}
+
+	100% {
+		transform: scale(20);
+	}
+}
+.animacion-DIV{
+    animation: clickAnimation 1s ease forwards;
+}
+
+.steeringWheel {
+    height: 18vh;
+    transition: transform 1s ease;
+}
+
+.steeringWheel:hover {
+    animation: steeringWheelAnimation 1s ease forwards;
+}
+
+/* Definición de la animación */
+@keyframes steeringWheelAnimation {
+    0% {
+        transform: rotate(0deg);
+    }
+    50% {
+        transform: rotate(36deg);
+    }
+    80% {
+        transform: rotate(-36deg);
+    }
+    100% {
+        transform: rotate(0deg);
+    }
+}
+
+
+.l1{
+    height: 30vh;
+    width: 100vw;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+.l2{
+    height: 30vh;
+    width: 100vw;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+.l1 div{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+.l2 div{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}

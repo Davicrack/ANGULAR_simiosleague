@@ -8,6 +8,9 @@ import { MatFormField, MatLabel, MatOption, MatSelect } from '@angular/material/
 import { MatSidenav, MatSidenavContainer, MatSidenavContent } from '@angular/material/sidenav';
 import { MatToolbar } from '@angular/material/toolbar';
 import { Router, RouterModule } from '@angular/router';
+import { RedesSocialesComponent2 } from "../../redes-sociales/redes-sociales.component";
+import { LogInComponent } from '../../log-in/log-in.component';
+import { LogInButtonComponent } from "../../log-in-button/log-in-button.component";
 
 @Component({
   selector: 'app-menu',
@@ -17,7 +20,10 @@ import { Router, RouterModule } from '@angular/router';
     MatButtonModule,
     RouterModule,
     NgClass,
-  ],
+    RedesSocialesComponent2,
+    LogInComponent,
+    LogInButtonComponent
+],
   templateUrl: './menu.component.html',
   styleUrl: './menu.component.scss'
 })

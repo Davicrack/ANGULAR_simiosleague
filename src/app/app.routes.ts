@@ -36,6 +36,9 @@ import { CreatePenaltyComponent } from './shared/components/penalty/create-penal
 import { SinglePenaltyComponent } from './shared/components/penalty/single-penalty/single-penalty.component';
 import { CreatePetitionComponent } from './shared/components/petition/create-petition/create-petition.component';
 import { SinglePetitionComponent } from './shared/components/petition/single-petition/single-petition.component';
+import { CalendarDivComponent } from './calendar-div/calendar-div.component';
+import { InitialPageComponent } from './initial-page/initial-page.component';
+import { LogInComponent } from './log-in/log-in.component';
 
 export const routes: Routes = [
     { path: 'circuit/consult', component: CircuitComponent },
@@ -84,6 +87,9 @@ export const routes: Routes = [
     { path: 'team/:id', component: SingleTeamComponent },
 
     { path: 'user/consult', component: UserComponent },
+    { path: 'user/login', component: LogInComponent },
     { path: 'user/create', component: CreateUserComponent },
     { path: 'user/:id', component: SingleUserComponent },
+
+    {path: '', component:InitialPageComponent},
 ];
